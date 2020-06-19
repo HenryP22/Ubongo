@@ -105,10 +105,35 @@ def tabla():
             y = y + 51
         x = x + 63
 
+def GemasJ1():
+    x = 120
+    y= 434
+    n = len(j1.ruta)
+    for i in range(n):
+        if j1.colores[i] == 1:
+            screen.blit(amarillaImg, (x, y))
+        elif j1.colores[i] == 2:
+            screen.blit(azulImg, (x, y))
+        elif j1.colores[i] == 3:
+            screen.blit(marronImg, (x, y))
+        elif j1.colores[i] == 4:
+            screen.blit(moradaImg, (x, y))
+        elif j1.colores[i] == 5:
+            screen.blit(rojaImg, (x, y))
+        elif j1.colores[i] == 6:
+            screen.blit(verdeImg, (x, y))
+        x = x + 35
+        if(x>360):
+            x=120
+            y=y+32
+
+
+
 #-------------------------------------------------------
 class jugador(object):
     def __init__(self):
         self.ruta = [None] * 0
+        self.colores = [None]*0
         self.ultimo = 0
 
     def tomarGema(self, a):
@@ -131,6 +156,9 @@ class TableroUbongo(object):
         self.fila4=3
         self.fila5=4
         self.fila6=5
+        self.tiempo = 0
+
+
 
     def tablero(self):
         running = True
@@ -146,63 +174,78 @@ class TableroUbongo(object):
             button_fila4 = pygame.Rect(300, 251, 30, 30)
             button_fila5 = pygame.Rect(300, 302, 30, 30)
             button_fila6 = pygame.Rect(300, 353, 30, 30)
+            button_iniciar = pygame.Rect(1095, 595, 50, 50)
+
 
             if button_fila1.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila1] = True
                     od.visitados[self.fila1 + 6] = True
-                    self.fila1=self.fila1+12
                     j1.ruta.append(self.fila1)
                     j1.ruta.append(self.fila1+6)
+                    j1.colores.append(od.colores[self.fila1])
+                    j1.colores.append(od.colores[self.fila1+6])
+                    self.fila1 = self.fila1 + 12
                     pygame.display.update()
 
             if button_fila2.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila2] = True
                     od.visitados[self.fila2 + 6] = True
-                    self.fila2 = self.fila2 + 12
                     j1.ruta.append(self.fila2)
                     j1.ruta.append(self.fila2 + 6)
+                    j1.colores.append(od.colores[self.fila2])
+                    j1.colores.append(od.colores[self.fila2 + 6])
+                    self.fila2 = self.fila2 + 12
                     pygame.display.update()
 
             if button_fila3.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila3] = True
                     od.visitados[self.fila3 + 6] = True
-                    self.fila3 = self.fila3 + 12
                     j1.ruta.append(self.fila3)
                     j1.ruta.append(self.fila3 + 6)
+                    j1.colores.append(od.colores[self.fila3])
+                    j1.colores.append(od.colores[self.fila3 + 6])
+                    self.fila3 = self.fila3 + 12
                     pygame.display.update()
 
             if button_fila4.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila4] = True
                     od.visitados[self.fila4 + 6] = True
-                    self.fila4 = self.fila4 + 12
                     j1.ruta.append(self.fila4)
                     j1.ruta.append(self.fila4 + 6)
+                    j1.colores.append(od.colores[self.fila4])
+                    j1.colores.append(od.colores[self.fila4 + 6])
+                    self.fila4 = self.fila4 + 12
                     pygame.display.update()
 
             if button_fila5.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila5] = True
                     od.visitados[self.fila5 + 6] = True
-                    self.fila5 = self.fila5 + 12
                     j1.ruta.append(self.fila5)
                     j1.ruta.append(self.fila5 + 6)
+                    j1.colores.append(od.colores[self.fila5])
+                    j1.colores.append(od.colores[self.fila5 + 6])
+                    self.fila5 = self.fila5 + 12
                     pygame.display.update()
 
             if button_fila6.collidepoint((mx, my)):
                 if click:
                     od.visitados[self.fila6] = True
                     od.visitados[self.fila6 + 6] = True
-                    self.fila6 = self.fila6 + 12
                     j1.ruta.append(self.fila6)
                     j1.ruta.append(self.fila6 + 6)
+                    j1.colores.append(od.colores[self.fila6])
+                    j1.colores.append(od.colores[self.fila6 + 6])
+                    self.fila6 = self.fila6 + 12
                     pygame.display.update()
 
+
             click = False
-            # draw_text('game', font, (255, 255, 255), screen, 20, 20)
+
             for event in pygame.event.get():
                 if event.type == QUIT:
                     pygame.quit()
@@ -216,6 +259,10 @@ class TableroUbongo(object):
 
             Base()
             tabla()
+            GemasJ1()
+            if button_iniciar.collidepoint((mx,my)):
+                if click:
+                    pass
             pygame.draw.rect(screen, (255, 0, 0), button_fila1)
             pygame.draw.rect(screen, (255, 0, 0), button_fila2)
             pygame.draw.rect(screen, (255, 0, 0), button_fila3)

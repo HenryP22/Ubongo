@@ -14,6 +14,7 @@ font = pygame.font.SysFont(None, 20)
 inicioImg = pygame.image.load('Inicio.png')
 seleccionImg = pygame.image.load('Selección de jugadores.png')
 instruccionesImg = pygame.image.load('Instrucciones.png')
+creditosImg = pygame.image.load('Creditos.png')
 
 def inicio():
     screen.blit(inicioImg,(0,0))
@@ -23,6 +24,9 @@ def seleccion():
 
 def instrucciones():
     screen.blit(instruccionesImg, (0,0))
+
+def creditos():
+    screen.blit(creditosImg,(0,0))
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -57,7 +61,7 @@ def main_menu():
                 instructions()
         if button_creditos.collidepoint((mx, my)):
             if click:
-                game()
+                credits()
         if button_salir.collidepoint((mx, my)):
             if click:
                 pygame.quit()
@@ -150,6 +154,24 @@ def instructions():
                     running = False
 
         instrucciones()
+        pygame.display.update()
+        mainClock.tick(60)
+
+def credits():
+    running = True
+    while running:
+        screen.fill((0, 0, 0))
+
+        draw_text('credits', font, (255, 255, 255), screen, 20, 20)
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+
+        creditos()
         pygame.display.update()
         mainClock.tick(60)
 
