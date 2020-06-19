@@ -3,7 +3,6 @@ from time import sleep
 import pygame, sys
 import graphviz
 import random
-
 # Setup pygame/window ---------------------------------------- #
 mainClock = pygame.time.Clock()
 from pygame.locals import *
@@ -11,7 +10,6 @@ from pygame.locals import *
 pygame.init()
 pygame.display.set_caption('Ubongo')
 screen = pygame.display.set_mode((1280, 720), 0, 32)
-
 font = pygame.font.SysFont(None, 20)
 
 tableroImg = pygame.image.load('tablero ubongo.png')
@@ -22,7 +20,12 @@ marronImg = pygame.image.load('gema marron.png')
 moradaImg = pygame.image.load('gema morada.png')
 rojaImg = pygame.image.load('gema roja.png')
 verdeImg = pygame.image.load('gema verde.png')
-
+imagen1 = pygame.image.load("cara1.png")
+imagen2 = pygame.image.load("cara2.png")
+imagen3 = pygame.image.load("cara3.png")
+imagen4 = pygame.image.load("cara4.png")
+imagen5 = pygame.image.load("cara5.png")
+imagen6 = pygame.image.load("cara6.png")
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
@@ -81,7 +84,19 @@ od.crear()
 
 def Base():
     screen.blit(tableroImg, (0, 0))
-
+def dado(n):
+    if n == 1:
+        screen.blit(imagen1, (140, 560))
+    elif n == 2:
+        screen.blit(imagen2, (140, 560))
+    elif n == 3:
+        screen.blit(imagen3, (140, 560))
+    elif n == 4:
+        screen.blit(imagen4, (140, 560))
+    elif n == 5:
+        screen.blit(imagen5, (140, 560))
+    elif n == 6:
+        screen.blit(imagen6, (140, 560))
 def tabla():
     x = 423
     y = 98
@@ -162,6 +177,8 @@ class TableroUbongo(object):
 
     def tablero(self):
         running = True
+        n = 0
+        enum = 0
         while running:
             screen.fill((0, 0, 0))
             draw_text('tablero', font, (255, 255, 255), screen, 20, 20)
@@ -243,6 +260,13 @@ class TableroUbongo(object):
                     self.fila6 = self.fila6 + 12
                     pygame.display.update()
 
+            if (1095<mx<1145 and 600<my<650):
+                 enum = 1
+                 n = random.randint(1, 6)
+            if (140 < mx < 240 and 560 < my < 660 ):
+                if(enum == 1):
+                    import Tablero2
+                    Tablero2.main()
 
             click = False
 
@@ -257,6 +281,7 @@ class TableroUbongo(object):
                     if event.button == 1:
                         click = True
 
+
             Base()
             tabla()
             GemasJ1()
@@ -269,6 +294,7 @@ class TableroUbongo(object):
             pygame.draw.rect(screen, (255, 0, 0), button_fila4)
             pygame.draw.rect(screen, (255, 0, 0), button_fila5)
             pygame.draw.rect(screen, (255, 0, 0), button_fila6)
+            dado(n)
             pygame.display.update()
             mainClock.tick(60)
 
