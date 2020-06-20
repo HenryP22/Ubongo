@@ -7,7 +7,7 @@ plataforma_imagen = pygame.Surface((50, 50))
 plataforma_imagen.fill(pygame.Color('white'))
 plataforma_imagen2 = pygame.Surface((50, 50))
 plataforma_imagen2.fill(pygame.Color('red'))
-fondo = pygame.image.load("UbongoPuzzle.jpg")
+
 class Plataforma(pygame.sprite.Sprite):
 
     def __init__(self, x, y, image):
@@ -22,33 +22,32 @@ def main():
 
     all_sprites = pygame.sprite.Group()
     forma = pygame.sprite.Group()
-    coords = [(200+350, 250+150), (200+350, 200+150), (200+350, 150+150),
+    coords = [(150+350,100+150),
+              (200+350, 250+150), (200+350, 200+150), (200+350, 150+150),(200+350,100+150),
               (250+350, 250+150), (250+350, 200+150), (250+350, 150+150),(250+350,100+150),
-              (300+350, 250+150), (300+350, 200+150), (300+350, 150+150),(300+350,100+150),
-              (350+350, 250+150), (350+350, 200+150), (350+350, 150+150),(350+350,100+150)]
+              (300+350, 250+150), (300+350, 200+150),
+              (350+350, 250+150), (350+350, 200+150)]
     for x1, y1 in coords:
         plataforma = Plataforma(x1, y1, plataforma_imagen)
         all_sprites.add(plataforma)
         forma.add(plataforma)
     hecho = False
-    rectangle = pygame.rect.Rect(200, 250, 50, 50)
-    rectangle2 = pygame.rect.Rect(200, 300, 50, 50)
-    rectangle3 = pygame.rect.Rect(200, 350, 50, 50)
-    rectangle4 = pygame.rect.Rect(250, 250, 50, 50)
+
+    rectangle = pygame.rect.Rect(200, 350, 50, 50)
+    rectangle2 = pygame.rect.Rect(300, 400, 50, 50)
+    rectangle3 = pygame.rect.Rect(250, 400, 50, 50)
+    rectangle4 = pygame.rect.Rect(200, 400, 50, 50)
 
     rectangle5 = pygame.rect.Rect(400, 350, 50, 50)
-    rectangle6 = pygame.rect.Rect(500, 400, 50, 50)
+    rectangle6 = pygame.rect.Rect(400, 400, 50, 50)
     rectangle7 = pygame.rect.Rect(450, 400, 50, 50)
-    rectangle8 = pygame.rect.Rect(400, 400, 50, 50)
+    rectangle8 = pygame.rect.Rect(500, 400, 50, 50)
+    rectangle8_1 = pygame.rect.Rect(500,450, 50, 50)
 
-    rectangle9 = pygame.rect.Rect(600, 300, 50, 50)
-    rectangle10 = pygame.rect.Rect(650, 300, 50, 50)
-    rectangle11 = pygame.rect.Rect(600, 350, 50, 50)
-    rectangle12 = pygame.rect.Rect(650, 350, 50, 50)
-
-    rectangle13 = pygame.rect.Rect(500, 600, 50, 50)
-    rectangle14 = pygame.rect.Rect(450, 600, 50, 50)
-    rectangle15 = pygame.rect.Rect(400, 600, 50, 50)
+    rectangle9 = pygame.rect.Rect(300, 200, 50, 50)
+    rectangle10 = pygame.rect.Rect(350, 200, 50, 50)
+    rectangle11 = pygame.rect.Rect(400, 200, 50, 50)
+    rectangle12 = pygame.rect.Rect(350, 250, 50, 50)
 
     rectangle_draging = False
     rectangle2_draging = False
@@ -58,13 +57,11 @@ def main():
     rectangle6_draging = False
     rectangle7_draging = False
     rectangle8_draging = False
+    rectangle8_1_draging = False
     rectangle9_draging = False
     rectangle10_draging = False
     rectangle11_draging = False
     rectangle12_draging = False
-    rectangle13_draging = False
-    rectangle14_draging = False
-    rectangle15_draging = False
     while not hecho:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -72,9 +69,9 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     if (rectangle.collidepoint(event.pos) or
-                            rectangle2.collidepoint(event.pos) or
-                            rectangle3.collidepoint(event.pos) or
-                            rectangle4.collidepoint(event.pos)):
+                        rectangle2.collidepoint(event.pos) or
+                        rectangle3.collidepoint(event.pos) or
+                        rectangle4.collidepoint(event.pos)):
                         rectangle_draging = True
                         rectangle2_draging = True
                         rectangle3_draging = True
@@ -84,18 +81,20 @@ def main():
                         offset_y = rectangle.y - mouse_y
                         offset_x2 = offset_x
                         offset_y2 = offset_y + 50
-                        offset_x3 = offset_x2
-                        offset_y3 = offset_y2 + 50
-                        offset_x4 = rectangle4.x - mouse_x
-                        offset_y4 = rectangle4.y - mouse_y
+                        offset_x3 = offset_x2 + 50
+                        offset_y3 = offset_y2
+                        offset_x4 = offset_x3 + 50
+                        offset_y4 = offset_y3
                     if (rectangle5.collidepoint(event.pos) or
                        rectangle6.collidepoint(event.pos) or
                        rectangle7.collidepoint(event.pos) or
-                       rectangle8.collidepoint(event.pos) ):
+                       rectangle8.collidepoint(event.pos) or
+                       rectangle8_1.collidepoint(event.pos)):
                        rectangle5_draging = True
                        rectangle6_draging = True
                        rectangle7_draging = True
                        rectangle8_draging = True
+                       rectangle8_1_draging = True
                        mouse_x, mouse_y = event.pos
                        offset_x5 = rectangle5.x - mouse_x
                        offset_y5 = rectangle5.y - mouse_y
@@ -105,6 +104,8 @@ def main():
                        offset_y7 = offset_y6
                        offset_x8 = offset_x7 + 50
                        offset_y8 = offset_y7
+                       offset_x8_1 = offset_x8
+                       offset_y8_1 = offset_y8 + 50
                     if (rectangle9.collidepoint(event.pos) or
                        rectangle10.collidepoint(event.pos) or
                        rectangle11.collidepoint(event.pos) or
@@ -118,23 +119,10 @@ def main():
                        offset_y9 = rectangle9.y - mouse_y
                        offset_x10 = offset_x9 + 50
                        offset_y10 = offset_y9
-                       offset_x11 = offset_x9
-                       offset_y11 = offset_y9 + 50
-                       offset_x12 = offset_x10
-                       offset_y12 = offset_y10 + 50
-                    if (rectangle13.collidepoint(event.pos) or
-                       rectangle14.collidepoint(event.pos) or
-                       rectangle15.collidepoint(event.pos) ):
-                       rectangle13_draging = True
-                       rectangle14_draging = True
-                       rectangle15_draging = True
-                       mouse_x, mouse_y = event.pos
-                       offset_x13 = rectangle13.x - mouse_x
-                       offset_y13 = rectangle13.y - mouse_y
-                       offset_x14 = offset_x13 + 50
-                       offset_y14 = offset_y13
-                       offset_x15 = offset_x14 + 50
-                       offset_y15 = offset_y14
+                       offset_x11 = offset_x10
+                       offset_y11 = offset_y10 + 50
+                       offset_x12 = offset_x10 + 50
+                       offset_y12 = offset_y10
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:
                     rectangle_draging = False
@@ -145,13 +133,11 @@ def main():
                     rectangle6_draging = False
                     rectangle7_draging = False
                     rectangle8_draging = False
+                    rectangle8_1_draging = False
                     rectangle9_draging = False
                     rectangle10_draging = False
                     rectangle11_draging = False
                     rectangle12_draging = False
-                    rectangle13_draging = False
-                    rectangle14_draging = False
-                    rectangle15_draging = False
             elif event.type == pygame.MOUSEMOTION:
                 if rectangle_draging:
                     mouse_x, mouse_y = event.pos
@@ -185,6 +171,10 @@ def main():
                     mouse_x, mouse_y = event.pos
                     rectangle8.x = mouse_x + offset_x8
                     rectangle8.y = mouse_y + offset_y8
+                if rectangle8_1_draging:
+                    mouse_x, mouse_y = event.pos
+                    rectangle8_1.x = mouse_x + offset_x8_1
+                    rectangle8_1.y = mouse_y + offset_y8_1
                 if rectangle9_draging:
                     mouse_x, mouse_y = event.pos
                     rectangle9.x = mouse_x + offset_x9
@@ -201,26 +191,13 @@ def main():
                     mouse_x, mouse_y = event.pos
                     rectangle12.x = mouse_x + offset_x12
                     rectangle12.y = mouse_y + offset_y12
-                if rectangle13_draging:
-                    mouse_x, mouse_y = event.pos
-                    rectangle13.x = mouse_x + offset_x13
-                    rectangle13.y = mouse_y + offset_y13
-                if rectangle14_draging:
-                    mouse_x, mouse_y = event.pos
-                    rectangle14.x = mouse_x + offset_x14
-                    rectangle14.y = mouse_y + offset_y14
-                if rectangle15_draging:
-                    mouse_x, mouse_y = event.pos
-                    rectangle15.x = mouse_x + offset_x15
-                    rectangle15.y = mouse_y + offset_y15
-            if (rectangle.x == 650 and rectangle.y == 300 and
-                rectangle8.x == 800 and rectangle8.y == 400 and
-                rectangle10.x == 800 and rectangle10.y == 300 and
-                rectangle15.x == 800 and rectangle15.y == 250):
+            if (rectangle4.x == 650 and rectangle4.y == 400 and
+                rectangle9.x == 500 and rectangle9.y == 250 and
+                rectangle8.x == 700 and rectangle8.y == 350):
                 hecho = True
 
-
         all_sprites.update()
+        screen.fill((0, 0, 0))
         all_sprites.draw(screen)
         pygame.draw.rect(screen, (255, 0, 0), rectangle)
         pygame.draw.rect(screen, (255, 0, 0), rectangle2)
@@ -230,14 +207,11 @@ def main():
         pygame.draw.rect(screen, (255, 0, 0), rectangle6)
         pygame.draw.rect(screen, (255, 0, 0), rectangle7)
         pygame.draw.rect(screen, (255, 0, 0), rectangle8)
+        pygame.draw.rect(screen, (255, 0, 0), rectangle8_1)
         pygame.draw.rect(screen, (255, 0, 0), rectangle9)
         pygame.draw.rect(screen, (255, 0, 0), rectangle10)
         pygame.draw.rect(screen, (255, 0, 0), rectangle11)
         pygame.draw.rect(screen, (255, 0, 0), rectangle12)
-        pygame.draw.rect(screen, (255, 0, 0), rectangle13)
-        pygame.draw.rect(screen, (255, 0, 0), rectangle14)
-        pygame.draw.rect(screen, (255, 0, 0), rectangle15)
-
         pygame.display.flip()
         clock.tick(30)
 

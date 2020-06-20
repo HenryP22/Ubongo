@@ -427,13 +427,28 @@ class TableroUbongo(object):
                         t = j4
                     pygame.display.update()
 
-            if (1095<mx<1145 and 600<my<650):
-                 enum = 1
-                 n = random.randint(1, 6)
-            if (140 < mx < 240 and 560 < my < 660 ):
-                if(enum == 1):
-                    import Tablero2
-                    Tablero2.main()
+            if (1095 < mx < 1145 and 600 < my < 650):
+                enum = random.randint(1, 6)
+                n = random.randint(1, 6)
+            if (140 < mx < 240 and 560 < my < 660):
+                if (enum == 1):
+                    import Puzzle1
+                    Puzzle1.main()
+                if (enum == 2):
+                    import Puzzle2
+                    Puzzle2.main()
+                if (enum == 3):
+                    import Puzzle3
+                    Puzzle3.main()
+                if (enum == 4):
+                    import Puzzle4
+                    Puzzle4.main()
+                if (enum == 5):
+                    import Puzzle5
+                    Puzzle5.main()
+                if (enum == 6):
+                    import Puzzle6
+                    Puzzle6.main()
 
             click = False
 
@@ -455,7 +470,6 @@ class TableroUbongo(object):
                 if event.type == MOUSEBUTTONDOWN:
                     if event.button == 1:
                         click = True
-
 
             Base()
             tabla()
