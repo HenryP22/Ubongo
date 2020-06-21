@@ -3,6 +3,7 @@ import random
 import gemas
 from Code import grafo
 import jugador
+import dado
 # Setup pygame/window ---------------------------------------- #
 mainClock = pygame.time.Clock()
 from pygame.locals import *
@@ -10,7 +11,8 @@ from pygame.locals import *
 pygame.init()
 pygame.display.set_caption('Ubongo')
 screen = pygame.display.set_mode((1280, 720), 0, 32)
-font = pygame.font.SysFont(None, 20)
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+font = pygame.font.SysFont(None, 30)
 
 tableroImg = pygame.image.load('tablero ubongo.png')
 
@@ -20,12 +22,7 @@ marronImg = pygame.image.load('gema marron.png')
 moradaImg = pygame.image.load('gema morada.png')
 rojaImg = pygame.image.load('gema roja.png')
 verdeImg = pygame.image.load('gema verde.png')
-imagen1 = pygame.image.load("cara1.png")
-imagen2 = pygame.image.load("cara2.png")
-imagen3 = pygame.image.load("cara3.png")
-imagen4 = pygame.image.load("cara4.png")
-imagen5 = pygame.image.load("cara5.png")
-imagen6 = pygame.image.load("cara6.png")
+
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
     textrect = textobj.get_rect()
@@ -40,19 +37,7 @@ od.crear()
 
 def Base():
     screen.blit(tableroImg, (0, 0))
-def dado(n):
-    if n == 1:
-        screen.blit(imagen1, (620, 580))
-    elif n == 2:
-        screen.blit(imagen2, (620, 580))
-    elif n == 3:
-        screen.blit(imagen3, (620, 580))
-    elif n == 4:
-        screen.blit(imagen4, (620, 580))
-    elif n == 5:
-        screen.blit(imagen5, (620, 580))
-    elif n == 6:
-        screen.blit(imagen6, (620, 580))
+
 def tabla():
     x = 423
     y = 98
@@ -85,18 +70,7 @@ j2 = jugador.player()
 j3 = jugador.player()
 j4 = jugador.player()
 
-def timer():
-    clock = pygame.time.Clock()
 
-    counter, text = 10, '10'.rjust(3)
-    pygame.time.set_timer(pygame.USEREVENT, 1000)
-    for e in pygame.event.get():
-        if e.type == pygame.USEREVENT:
-            counter -= 1
-            text = str(counter).rjust(3)
-            screen.blit(font.render(text, True, (0, 0, 0)), (32, 48))
-            pygame.display.flip()
-            clock.tick(60)
 #-------------------------------------------------------
 class TableroUbongo(object):
     def __init__(self):
@@ -107,8 +81,9 @@ class TableroUbongo(object):
         self.fila4=3
         self.fila5=4
         self.fila6=5
-        self.tiempo = 0
-
+        self.tiempo = 60
+        self.ronda=1
+        self.enJuego = False
 
 
     def tablero(self):
@@ -128,6 +103,7 @@ class TableroUbongo(object):
             button_fila5 = pygame.Rect(300, 302, 30, 30)
             button_fila6 = pygame.Rect(300, 353, 30, 30)
             button_iniciar = pygame.Rect(1095, 595, 50, 50)
+            button_dado = pygame.Rect(615,580,60,57)
             t=jugador.player()
 
 
@@ -280,7 +256,6 @@ class TableroUbongo(object):
                         pygame.display.update()
                     else: pass
 
-
             if button_fila6.collidepoint((mx, my)):
                 if click:
                     if self.fila6 <= 65:
@@ -310,34 +285,22 @@ class TableroUbongo(object):
                         pygame.display.update()
                     else: pass
 
+            if button_iniciar.collidepoint((mx, my)):
+                if click:
+                    self.enJuego =True
+                    enum = random.randint(1, 6)
+                    n = random.randint(1, 6)
 
-            if (1095<mx<1145 and 600<my<650):
-                enum = random.randint(1, 6)
-                n = random.randint(1, 6)
-            if (620 < mx < 680 and 580 < my < 636 ):
-                if (enum == 1):
-                    import Puzzle1
-                    Puzzle1.main()
-                if (enum == 2):
-                    import Puzzle2
-                    Puzzle2.main()
-                if (enum == 3):
-                    import Puzzle3
-                    Puzzle3.main()
-                if (enum == 4):
-                    import Puzzle4
-                    Puzzle4.main()
-                if (enum == 5):
-                    import Puzzle5
-                    Puzzle5.main()
-                if (enum == 6):
-                    import Puzzle6
-                    Puzzle6.main()
+            if button_dado.collidepoint((mx,my)):
+                if click:
+                    dado.puzzle(enum)
 
-            620, 580
+
             click = False
 
             for event in pygame.event.get():
+                if event.type == pygame.USEREVENT and self.enJuego == True:
+                    self.tiempo =self.tiempo-1
                 if event.type == QUIT:
                     pygame.quit()
                     sys.exit()
@@ -368,7 +331,12 @@ class TableroUbongo(object):
             pygame.draw.rect(screen, (255, 0, 0), button_fila4)
             pygame.draw.rect(screen, (255, 0, 0), button_fila5)
             pygame.draw.rect(screen, (255, 0, 0), button_fila6)
-            dado(n)
+            if self.tiempo >0 :
+                draw_text(str(self.tiempo), font, (255, 255, 255), screen, 205, 67)
+            else:
+                draw_text(' se acabó el tiempo ', font, (255, 255, 255), screen, 200, 67)
+            draw_text(str(self.ronda), font, (255, 255, 255), screen, 975, 67)
+            dado.dice(n, screen)
             pygame.display.update()
             mainClock.tick(60)
 
