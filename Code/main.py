@@ -34,7 +34,6 @@ def draw_text(text, font, color, surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
-Juego=Tablero.TableroUbongo()
 
 
 click = False
@@ -106,15 +105,15 @@ def game():
 
         if button_j2.collidepoint((mx, my)):
             if click:
-                Juego.tablero()
+                Tablero.Iniciar()
                 pass
         if button_j3.collidepoint((mx, my)):
             if click:
-                Juego.tablero()
+                Tablero.Iniciar()
                 pass
         if button_j4.collidepoint((mx, my)):
             if click:
-                Juego.tablero()
+                Tablero.Iniciar()
                 pass
 
         pygame.draw.rect(screen, (255, 0, 0), button_j2)
