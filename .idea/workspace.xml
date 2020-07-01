@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab4aa392-eb24-4e52-9248-465ac3aa7467" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/HENRY1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/final 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/final.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/Tablero.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Tablero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/dado.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/dado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/jugador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/jugador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +37,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -42,6 +47,48 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="Puzzle1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Ubongo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/Puzzle1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Puzzle2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Ubongo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/Puzzle2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Tablero" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ubongo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,27 +131,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="jugador" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Ubongo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Code" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code/jugador.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ubongo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,9 +155,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Puzzle2" />
+        <item itemvalue="Python.Puzzle1" />
         <item itemvalue="Python.Tablero" />
         <item itemvalue="Python.gemas" />
-        <item itemvalue="Python.jugador" />
       </list>
     </recent_temporary>
   </component>
@@ -152,22 +179,26 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1898" height="268" key="GridCell.Tab.0.bottom" timestamp="1592717229652">
+    <state x="586" y="197" key="#Inspections" timestamp="1592724321254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592717229652" />
-    <state width="1898" height="268" key="GridCell.Tab.0.center" timestamp="1592717229652">
+    <state x="586" y="197" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1592724321254" />
+    <state width="1898" height="259" key="GridCell.Tab.0.bottom" timestamp="1593557283745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="268" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592717229652" />
-    <state width="1898" height="268" key="GridCell.Tab.0.left" timestamp="1592717229652">
+    <state width="1898" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593557283745" />
+    <state width="1898" height="259" key="GridCell.Tab.0.center" timestamp="1593557283744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="268" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592717229652" />
-    <state width="1898" height="268" key="GridCell.Tab.0.right" timestamp="1592717229652">
+    <state width="1898" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593557283744" />
+    <state width="1898" height="259" key="GridCell.Tab.0.left" timestamp="1593557283744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="268" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592717229652" />
+    <state width="1898" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593557283744" />
+    <state width="1898" height="259" key="GridCell.Tab.0.right" timestamp="1593557283745">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1898" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593557283745" />
     <state x="248" y="235" key="SettingsEditor" timestamp="1592697820550">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
